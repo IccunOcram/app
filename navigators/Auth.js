@@ -8,7 +8,7 @@ const Stack = createStackNavigator()
 export default function Auth() {
     return (
         <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Login" component={Login} options={{ title: 'Nome App' }} />
             <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
     )

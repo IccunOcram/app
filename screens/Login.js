@@ -23,7 +23,7 @@ export default function Login({ navigation, route }) {
             <Input />
             <Text>Password</Text>
             <Input />
-            <FormButton />
+            <FormButton title={"Invia"} />
             <TouchableOpacity onPress={lostPassword}>
                 <Text>Hai dimenticato la password?</Text>
             </TouchableOpacity>
