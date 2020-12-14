@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import colors from '../config/colors.js'
 
 export default function ThankYouScreen () {
     return (
