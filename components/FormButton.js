@@ -2,10 +2,14 @@ import React from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
 import colors from '../config/colors';
 
-export default function FormButton(){
+export default function FormButton({
+  title="",
+  onPress,
+  ...props
+}){
     return <>
     <View>
-        <Button style={{}} title="Press me" onPress={() => Alert.alert('Simple Button pressed')} />
+        <Button style={styles.button} title={title} onPress={onPress} {...props}/>
       </View>
     </>
 }
