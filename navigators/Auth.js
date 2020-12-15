@@ -2,14 +2,16 @@ import React from "react"
 import { createStackNavigator } from '@react-navigation/stack'
 import Login from "../screens/Login.js"
 import SignUp from "../screens/SignUp.js"
+import ThankYouScreen from "../screens/ThankYouScreen"
 
 const Stack = createStackNavigator()
 
 export default function Auth() {
     return (
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Login"  >
             <Stack.Screen name="Login" component={Login} options={{ title: 'Nome App' }} />
             <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="ThankYouScreen" component={ThankYouScreen} />
         </Stack.Navigator>
     )
 }

@@ -36,7 +36,7 @@ export default function SignUp() {
             const { result, payload } = await api.post('authentication/signup-action', formData.values)
             if (result) {
                 manageUserData(payload)
-                //rootNavigation.current.navigate('MainNavigator')
+                rootNavigation.current.navigate('ThankYouScreen')
                 console.log('Ha funzionato');
             } else {
                 console.log('Errore');

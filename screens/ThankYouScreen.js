@@ -1,9 +1,11 @@
-import { View, Text } from 'react-native'
+import React from "react"
+import { View, Text, StyleSheet } from 'react-native'
+import colors from "../config/colors"
 
 export default function ThankYouScreen () {
     return (
         <View style={styles.container}>
-          <Text style={[styles.text, alignStyle]}>{props.label}</Text>
+          <Text style={[styles.text]}>grazie</Text>
         </View>
       )
     }
