@@ -1,10 +1,11 @@
+import React from "react"
 import { View, Text, StyleSheet } from 'react-native'
 import colors from '../config/colors.js'
 
 export default function ThankYouScreen () {
     return (
         <View style={styles.container}>
-          <Text style={[styles.text, alignStyle]}>{props.label}</Text>
+          <Text style={[styles.text]}>Grazie</Text>
         </View>
       )
     }

@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useContext, useState, createRef } from "react";
 import { Text } from 'react-native'
 import Input from '../components/Input.js'
 import FormButton from '../components/FormButton.js';
 import { View, CheckBox } from 'react-native'
-import { useState } from 'react'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import useForm from '../hooks/useForm.js'
 import api from '../Utility/api'
 
 
 const inputs = [
-    { label: 'Email', name: 'email' },
-    { label: 'Nome Utente', name: 'username' },
-    { label: 'Password', name: 'password' },
-    { label: 'Conferma la password', name: 'password_confirmation' }
+    { label: 'Nome', name: 'name', ref: createRef() },
+    { label: 'Cognome', name: 'surname', ref: createRef() },
+    { label: 'Email', name: 'email', ref: createRef() },
+    { label: 'Password', name: 'password', ref: createRef(), secureTextEntry: true, },
+    { label: 'Conferma la password', name: 'password_confirmation', ref: createRef(), secureTextEntry: true,},
+    { label: 'Nome Utente', name: 'username', ref: createRef() }
 ];
 
 export default function SignUp() {
@@ -36,9 +37,11 @@ export default function SignUp() {
         try {
             setLoading(true)
             const { result, errors, payload } = await api.post('authentication/signup-action', formData.values)
+            console.log(errors)
             if (result) {
+                console.log(formData.values)
                 manageUserData(payload)
-                navigator.current.navigate('ThankYouScreen')
+                navigator.navigate('ThankYouScreen')
                 console.log('Ha funzionato');
             } else {
                 console.log('Errore');
