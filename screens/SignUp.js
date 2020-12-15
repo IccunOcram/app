@@ -22,6 +22,8 @@ export default function SignUp() {
     const [formData, setFormValue] = useForm(requiredInputs)
     const [isSelected, setSelection] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [messageOpen, setMessageOpen] = useState(false)
 
     const privacyConfirmation = () => {
         console.log('Grazie per aver accettato la privacy');
@@ -33,17 +35,20 @@ export default function SignUp() {
 
         try {
             setLoading(true)
-            const { result, payload } = await api.post('authentication/signup-action', formData.values)
+            const { result, errors, payload } = await api.post('authentication/signup-action', formData.values)
             if (result) {
                 manageUserData(payload)
-                navigation.navigate('ThankYouScreen')
+                navigator.current.navigate('ThankYouScreen')
                 console.log('Ha funzionato');
             } else {
                 console.log('Errore');
+                setError(errors[0].message)
+                setMessageOpen(true)
             }
 
         } catch (err) {
-            console.log('catch', err);
+            setError(err)
+            setMessageOpen(true)
 
         } finally {
             setLoading(false);
