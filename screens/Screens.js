@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 export default function Screens(props) {
     return (
         <>
-            <NavigationContainer ref = { rootNavigation }>
+            <NavigationContainer ref = { rootNavigation } headerMode='none'>
                 <Stack.Navigator initialRouteName="Nome App">
                     <Stack.Screen name="Nome App" component={Auth} />
                     <Stack.Screen name="Main" component={Main} />
