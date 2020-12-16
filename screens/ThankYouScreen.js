@@ -10,7 +10,7 @@ export default function ThankYouScreen({navigation}) {
   };
   return (
     <View style={styles.container}>
-      <Text style={[styles.text]}>Grazie e benvenuto nella nostra app</Text>
+      <Text style={[styles.text]}>Grazie e benvenuto nella nostra app!</Text>
       <FormButton title={"Entra nell'App"} onPress={goHome} />
     </View>
   );
