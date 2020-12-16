@@ -61,27 +61,32 @@ export default function SignUp() {
     }
 
     return (
-    <>
-
+    
+     <View style = {{ flex : 1, alignItems : "center"}}>
+      <View style={styles.signupcontainer} >
+        <Text style={{color:'white'}} >register</Text>        
+      </View>
         {inputs.map((input, index) =>
-            <View key={index} style = {{width:"80%", alignItems : "center"}} >
+            <View key={index} style = {{width:"100%", alignItems : "center"}} >
                 
                 <TextInput onChangeText={(text) => setFormValue(input.name, text)}
-                    label={input.label} style = {styles.input} placeholder={input.label}
+                    label={input.label} style = {styles.input}  placeholder={input.label } placeholderTextColor='#0099e5'
                 />
             </View>)}
 
-        <View style = {{flexdirection: "row"}} >
+        <View stile={{backgroundColor: 'red', width: '90%' }} >
             <CheckBox
                 value={isSelected}
                 onValueChange={setSelection}
-            />
-            <Text>Ho letto e accetto la normativa</Text>
+                />
+                <Text>Ho letto e accetto la normativa </Text>
 
         </View>
 
-        <FormButton title={"ISCRIVITI"} onPress={submitSignup} />
+        <View style={styles.button }>
+            <TouchableOpacity title={"rgister"} onPress={submitSignup} ><Text style={{color:'black'}}>register</Text></TouchableOpacity>
+        </View>
 
-
-    </>)
+    </View>
+    )
 }
