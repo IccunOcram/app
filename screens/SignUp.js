@@ -1,11 +1,12 @@
 import React, { useContext, useState, createRef } from "react";
-import { Text } from 'react-native'
+import { Text, TextInput } from 'react-native'
 import Input from '../components/Input.js'
 import FormButton from '../components/FormButton.js';
 import { View, CheckBox } from 'react-native'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import useForm from '../hooks/useForm.js'
 import api from '../Utility/api'
+import styles from './Style.js'
 
 
 const inputs = [
@@ -59,22 +60,25 @@ export default function SignUp() {
 
     }
 
-    return (<>
+    return (
+    <>
 
         {inputs.map((input, index) =>
-            <View key={index}>
-                <Text>{input.label}</Text>
-                <Input updateInputValue={(text) => setFormValue(input.name, text)}
-                    label={input.label}
+            <View key={index} style = {{width:"80%", alignItems : "center"}} >
+                
+                <TextInput updateInputValue={(text) => setFormValue(input.name, text)}
+                    label={input.label} style = {styles.input} placeholder={input.label}
                 />
             </View>)}
 
-        <CheckBox
-            value={isSelected}
-            onValueChange={setSelection}
-        />
+        <View style = {{flexdirection: "row"}} >
+            <CheckBox
+                value={isSelected}
+                onValueChange={setSelection}
+            />
+            <Text>Ho letto e accetto la normativa</Text>
 
-        <Text>Ho letto e accetto la normativa della Privacy</Text>
+        </View>
 
         <FormButton title={"ISCRIVITI"} onPress={submitSignup} />
 

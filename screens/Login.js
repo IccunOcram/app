@@ -1,5 +1,5 @@
 import React, { useContext, useState, createRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import Row from "../components/Row.js";
 import FormButton from "../components/FormButton.js";
 import Input from "../components/Input.js";
@@ -8,6 +8,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import useForm from "../hooks/useForm.js";
 import { AuthContext } from "../context/AuthContext"
 import api from '../Utility/api'
+import Spacer from '../components/Spacer.js'
+import styles from './Style.js'
 
 const inputs = [
   { label: "Username", name: "username_email", ref: createRef() },
@@ -60,14 +62,17 @@ export default function Login({ navigation, route }) {
   };
 
   return (
-    <>
+    <View style = {{ flex : 1, alignItems : "center"}}>
       {inputs.map((input, index) =>
-            <View key={index}>
-                <Text>{input.label}</Text>
-                <Input updateInputValue={(text) => setFormValue(input.name, text)}
-                    label={input.label}
+            <View key={index} style = {{width:"80%", alignItems : "center"}} >
+                {/* <Text>{input.label}</Text> */}
+                <TextInput updateInputValue={(text) => setFormValue(input.name, text)}
+                    label={input.label} style = {styles.input} placeholder={input.label}
                 />
+                <Spacer size={10} />
+                
             </View>)}
+            <Spacer size={5} />
       <FormButton title={"Accedi"} onPress={submitLogin} />
       <TouchableOpacity onPress={lostPassword}>
         <Text>Hai dimenticato la password?</Text>
@@ -78,6 +83,6 @@ export default function Login({ navigation, route }) {
           <Text>Registrati!</Text>
         </TouchableOpacity>
       </Text>
-    </>
+    </View>
   );
 }
