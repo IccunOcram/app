@@ -7,6 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import useForm from '../hooks/useForm.js'
 import api from '../Utility/api'
 import styles from './Style.js'
+import { rootNavigation } from '../Utility/navigation.js'
 
 
 const inputs = [
@@ -18,7 +19,7 @@ const inputs = [
     { label: 'Nome Utente', name: 'username', ref: createRef() }
 ];
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
 
     const requiredInputs = ['username', 'email', 'password', 'password_confirmation']
     const [formData, setFormValue] = useForm(requiredInputs)
@@ -30,6 +31,10 @@ export default function SignUp() {
     const privacyConfirmation = () => {
         console.log('Grazie per aver accettato la privacy');
     }
+
+     const provaSignup = () => 
+        {navigation.navigate('ThankYouScreen')} 
+    
     
     const submitSignup = async () => {
 
@@ -42,7 +47,7 @@ export default function SignUp() {
             if (result) {
                 console.log(formData.values)
                 manageUserData(payload)
-                navigaton.navigate('ThankYouScreen')
+                navigation.navigate('ThankYouScreen')
                 console.log('Ha funzionato');
             } else {
                 console.log('Errore');
@@ -80,7 +85,7 @@ export default function SignUp() {
 
         </View>
 
-        <FormButton title={"ISCRIVITI"} onPress={submitSignup} />
+        <FormButton title={"ISCRIVITI"} onPress={() => {submitSignup(); provaSignup()}} />
 
 
     </>)

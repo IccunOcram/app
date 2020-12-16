@@ -11,7 +11,7 @@ export default function Screens(props) {
     return (
         <>
             <NavigationContainer ref = { rootNavigation }>
-                <Stack.Navigator initialRouteName="Nome App">
+                <Stack.Navigator initialRouteName="Main">
                     <Stack.Screen name="Nome App" component={Auth} />
                     <Stack.Screen name="Main" component={Main} />
                 </Stack.Navigator>
