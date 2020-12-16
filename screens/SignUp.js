@@ -42,7 +42,7 @@ export default function SignUp() {
             if (result) {
                 console.log(formData.values)
                 manageUserData(payload)
-                navigator.navigate('ThankYouScreen')
+                navigaton.navigate('ThankYouScreen')
                 console.log('Ha funzionato');
             } else {
                 console.log('Errore');
@@ -66,7 +66,7 @@ export default function SignUp() {
         {inputs.map((input, index) =>
             <View key={index} style = {{width:"80%", alignItems : "center"}} >
                 
-                <TextInput updateInputValue={(text) => setFormValue(input.name, text)}
+                <TextInput onChangeText={(text) => setFormValue(input.name, text)}
                     label={input.label} style = {styles.input} placeholder={input.label}
                 />
             </View>)}

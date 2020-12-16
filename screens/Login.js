@@ -66,7 +66,7 @@ export default function Login({ navigation, route }) {
       {inputs.map((input, index) =>
             <View key={index} style = {{width:"80%", alignItems : "center"}} >
                 {/* <Text>{input.label}</Text> */}
-                <TextInput updateInputValue={(text) => setFormValue(input.name, text)}
+                <TextInput onChangeText={(text) => setFormValue(input.name, text)}
                     label={input.label} style = {styles.input} placeholder={input.label}
                 />
                 <Spacer size={10} />
