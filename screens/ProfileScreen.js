@@ -1,10 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View } from 'react-native';
+import UpTab from "../components/UpTab"
 
 export default function ProfileScreen(){
     return(
-        <View>
-            <Text>Profilo</Text>
-        </View>
+        <>
+            <UpTab/>
+            
+            <View>
+                <Text>Profilo</Text>
+            </View>
+        </>
     )
 }
