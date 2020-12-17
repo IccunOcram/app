@@ -80,11 +80,14 @@ export default function Login({ navigation, route }) {
                 
           </View>)}
             <Spacer size={5} />
+          
+          <View style = {{width:"100%", alignItems: 'center', }}>
+                <View style={styles.button}>
+              <TouchableOpacity title={"Accedi"} onPress={submitLogin} style={{width: 300, alignItems:'center'}} >
+                    <Text style={{color:'white'}}>login</Text>
 
-          <View style = {{width:"100%", alignItems: 'center'}}>
-            <View style={styles.button }>
-              <TouchableOpacity title={"Accedi"} onPress={submitLogin}><Text style={{color:'white'}}>login</Text></TouchableOpacity>
-            </View>
+              </TouchableOpacity>
+                </View>
             
             <TouchableOpacity onPress={lostPassword}>
               <Text>have you lost the <Text style={{color: colors.red}}>password?</Text></Text>

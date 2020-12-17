@@ -89,7 +89,9 @@ export default function SignUp({navigation}) {
         </View>
 
         <View style={styles.button }>
-            <TouchableOpacity title={"rgister"} onPress={() => {submitSignup(); provaSignup()}}><Text style={{color:'black'}}>register</Text></TouchableOpacity>
+            <TouchableOpacity title={"rgister"} onPress={() => {submitSignup(); provaSignup()}} style={{width: 300, alignItems:'center'}}>
+                <Text style={{color:'white'}}>register</Text>
+            </TouchableOpacity>
         </View>
 
     </View>

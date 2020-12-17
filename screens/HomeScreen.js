@@ -1,6 +1,7 @@
 import React, { useContext, useState, createRef } from "react";
-import { StyleSheet, Text, View } from 'react-native';
+import {  Text, View } from 'react-native';
 import { AuthContext } from "../context/AuthContext"
+import UpTab from "../components/UpTab"
 
 export default function HomeScreen(){
 
@@ -11,10 +12,19 @@ export default function HomeScreen(){
     var month = new Date().getMonth();
     var year = new Date().getFullYear();
 
-    return(
-        <View>
-            <Text>Benvenuto {user.name}</Text>
-            <Text>Oggi è il {date}/{month}/{year}</Text>
-        </View>
+    return(        
+        <>
+            <UpTab/>
+        
+            <View>
+                <Text>Benvenuto {user.name}</Text>
+                <Text>Oggi è il {date}/{month}/{year}</Text>
+            </View>
+        
+        
+        </>
+    
+        
+        
     )
 }
