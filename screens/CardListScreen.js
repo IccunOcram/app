@@ -1,46 +1,64 @@
 import React, {useEffect, useState} from "react";
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
+import useForm from "../hooks/useForm.js";
+import styles from './Style.js';
+import { TouchableOpacity } from "react-native-gesture-handler";
+import api from "../Utility/api"
 
 
 
 
 export default function CardListScreen(){
 
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+  const [isSelected, setSelection] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [messageOpen, setMessageOpen] = useState(false)
 
-    useEffect(() => {
-        fetch('https://tree-rn-server.herokuapp.com/get-cards')
-          .then((response) => response.json())
-          .then((json) => setData(json.movies))
-          .catch((error) => console.error(error))
-          .finally(() => setLoading(false));
-      }, []);
+    const getCardList = async () => {
+
+      console.log("Sono Eseguito")
+
+
+      try {
+          setLoading(true)
+          const { result, errors, payload } = await api.get('get-cards')
+          console.log(errors)
+          console.log(result)
+          console.log(payload)
+          
+
+      } catch (err) {
+          console.log(err)
+      } finally {
+          setLoading(false);
+      }
+
+  }
     
-
-    /*
-    nostra fetch
-
-    const [cards, setCards] = useState([]);
-     useEffect(() => {
-        fetch('https://tree-rn-server.herokuapp.com/get-cards')
-        .then((response) => response.json())
-        .then((json) => setCards(json.cards))
-        .catch((error) => console.error(error))
-    }, []); */
-
-
     return (
-        <View style={{ flex: 1, padding: 24 }}>
+
+        <View style={styles.button }>
+            
+            
+            <TouchableOpacity title={"Get"} onPress={() => {getCardList()}}>
+              <Text style={{color:'black'}}>Ottieni carte</Text>
+            </TouchableOpacity>
+            
+            
+        </View>
+
+        /* <View style={{ flex : 1, alignItems : "center"}}>
           {isLoading ? <ActivityIndicator/> : (
             <FlatList
               data={data}
               keyExtractor={({ id }, index) => id}
               renderItem={({ item }) => (
-                <Text>{item.title}, {item.releaseYear}</Text>
+                <Text>{item}</Text>
               )}
             />
           )}
-        </View>
+          <Text></Text>
+        </View> */
       );
 }

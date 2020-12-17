@@ -8,6 +8,7 @@ export default function ThankYouScreen({navigation}) {
   const goHome = () => {
     rootNavigation.current.navigate("Main");
   };
+  
   return (
     <View style={styles.container}>
       <Text style={[styles.text]}>Grazie e benvenuto nella nostra app!</Text>
