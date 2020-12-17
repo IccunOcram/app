@@ -4,6 +4,7 @@ import HomeScreen from "../screens/HomeScreen.js";
 import CardListScreen from "../screens/CardListScreen.js";
 import ProfileScreen from "../screens/ProfileScreen.js";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import colors from '../config/colors';
 
 // usare createBottommTabNavigator: https://reactnavigation.org/docs/bottom-tab-navigator/
 
@@ -11,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
 export default function Main(){
     return (
-        <Tab.Navigator initialRouteName="Home"
+        <Tab.Navigator initialRouteName="CardList"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -30,12 +31,12 @@ export default function Main(){
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
+          activeTintColor: colors.blu,
           inactiveTintColor: 'gray',
         }}
       >
           <Tab.Screen name="Home" component={HomeScreen}/>
-          <Tab.Screen name="CardList" component={CardListScreen} />
+          <Tab.Screen name="CardList" component={CardListScreen}/>
           <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>
       );
