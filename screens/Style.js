@@ -71,9 +71,10 @@ const styles = StyleSheet.create({
     /////////////////////////////////PROFILE//////////////////////
 
     profilecontainer: {
-        height: '40%',
+        
+        height: '50%',
         width: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor : colors.blu,
         borderBottomLeftRadius: 90,
