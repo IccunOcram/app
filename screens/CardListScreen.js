@@ -69,9 +69,7 @@ export default function CardListScreen() {
           ))
         : console.log("Non c'è niente")}
       </View>
-      <View>
-        <Text>prova</Text>
-      </View>
+      
       
 
         </ScrollView>

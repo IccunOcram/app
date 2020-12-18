@@ -10,8 +10,7 @@ import colors from '../config/colors'
 
 export default function ProfileScreen(){
     const { user } = useContext(AuthContext);
-    const uuid = user.uuid
-    console.log(uuid)
+    const uuid = user.uuid    
     const copyIt = ()=> Clipboard.setString(uuid)
     return(
         <>
@@ -56,7 +55,7 @@ export default function ProfileScreen(){
                             />
                     </TouchableOpacity>                  
 
-                    <Text style={{fontSize: 25, color:colors.red, margin: 20}}>scan the qr or click to copy</Text>
+                    <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
 
 
                    
