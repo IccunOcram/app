@@ -12,82 +12,34 @@ export default function HomeScreen() {
   var month = new Date().getMonth();
   var year = new Date().getFullYear();
 
-  return (
-    <>
-      <UpTab />
 
-      <View style={{ width: "100%", alignItems: "center" }}>
-        <Text style={{ color: colors.blu, fontSize: 40 }}> {user.name}</Text>
-      </View>
-      <View
-        style={{
-          height: "100%",
-          width: "100%",
-          alignItems: "center",
-          borderRadius: 10,
-        }}
-      >
-        <View
-          style={{
-            margin: 10,
-            width: "90%",
-            height: "15%",
-            backgroundColor: colors.blu,
-            borderRadius: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 50 }}>
-            13 <Text style={{ fontSize: 20 }}>pokemon</Text>
-          </Text>
-        </View>
-        <View
-          style={{
-            margin: 10,
-            width: "90%",
-            height: "15%",
-            backgroundColor: colors.red,
-            borderRadius: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 50 }}>
-            13 <Text style={{ fontSize: 20 }}>minecraft</Text>
-          </Text>
-        </View>
-        <View
-          style={{
-            margin: 10,
-            width: "90%",
-            height: "15%",
-            backgroundColor: colors.green,
-            borderRadius: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 50 }}>
-            13 <Text style={{ fontSize: 20 }}>supermario</Text>
-          </Text>
-        </View>
-        <View
-          style={{
-            margin: 10,
-            width: "90%",
-            height: "15%",
-            backgroundColor: colors.yellow,
-            borderRadius: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white", fontSize: 50 }}>
-            13 <Text style={{ fontSize: 20 }}>scambi</Text>
-          </Text>
-        </View>
-      </View>
-    </>
-  );
+    return(        
+        <>
+            <UpTab/>
+        
+            <View style={{width: '100%', alignItems: 'center'}}>
+                <Text style={{color: colors.blu, fontSize: 40}}> {user.name}</Text>
+                
+            </View>
+            <View style={{height: '100%', width: '100%', alignItems:'center', borderRadius: 10,}}>
+                <View style={{ margin: 10 ,width: '90%', height: '15%', backgroundColor: colors.yellow, borderRadius: 10, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontSize: 50}}>13 <Text style={{fontSize: 20 }}>pokemon</Text></Text>
+                </View>
+                <View style={{ margin: 10 ,width: '90%', height: '15%', backgroundColor: colors.red, borderRadius: 10, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontSize: 50}}>13 <Text style={{fontSize: 20 }}>minecraft</Text></Text>
+                </View>
+                <View style={{ margin: 10 ,width: '90%', height: '15%', backgroundColor: colors.green, borderRadius: 10, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'white', fontSize: 50}}>13 <Text style={{fontSize: 20 }}>supermario</Text></Text>
+                </View>
+                
+                
+                
+            </View>
+        
+        
+        </>
+    
+        
+        
+    )
 }

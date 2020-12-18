@@ -64,25 +64,47 @@ export default function CardListScreen({navigation}) {
               style={{ borderWidth: 0, borderColor: "none" }}
               presentationStyle="overFullScreen"
             >
-              <View style={{ backgroundColor: "yellow" }}>
-                <TouchableOpacity onPress={() => setOpen(false)}>
-                  <Text>Chiudi</Text>
+              <View style={{ backgroundColor: "white", padding:10, alignItems: 'center', justifyContent:'space-between' }}>
+
+                <View style={{height: '5%',width: '100%', alignItems:'flex-end'}}>
+                  <TouchableOpacity onPress={() => setOpen(false)}>
+                    <View style={{ borderRadius: 100, height:40, width:40, alignItems: 'center', justifyContent: 'center'  }}>
+
+                    <Text style={{fontSize:40,color: colors.blu}}>x</Text>
+                    </View>
+                  </TouchableOpacity>
+
+                </View>
+                <View style={{width: '100%', height:'40%', alignItems:'flex-start'}}>
+
+                  <Text style={{ fontSize: 50, color: colors.blu }}>
+                    {cards[activeCard].name}
+                  </Text>
+                  <Text style={{ fontSize: 20, color:colors.blu }}>
+                    {cards[activeCard].game}
+                  </Text>
+                  <Text style={{ fontSize: 20, color: colors.blu }}>
+                    {cards[activeCard].description}
+                  </Text>
+                </View>
+                <View style={{width: '60%', height:'40%', borderRadius: 10, backgroundColor: colors.blu}} >
+
+
+                </View>
+
+                <View style={{height: '15%', width:'100%', alignItems:'center',justifyContent:'center'}}>
+
+                  <View style={{width: '60%',height: 45,borderRadius: 10,backgroundColor:  colors.blu ,alignItems: 'center',justifyContent: 'center'}}>
+                <TouchableOpacity title={"scambia"}  style={{width: 300, alignItems:'center'}} >
+                      <Text style={{color:'white',fontSize:20}}>scambia</Text>
+
                 </TouchableOpacity>
-                <Text style={{ fontSize: 60, color: "blue" }}>
-                  {cards[activeCard].name}
-                </Text>
-                <Text style={{ fontSize: 60, color: "blue" }}>
-                  {cards[activeCard].game}
-                </Text>
-                <Text style={{ fontSize: 20, color: "blue" }}>
-                  {cards[activeCard].description}
-                </Text>
+                  </View>
+                </View>
+
+
+
               </View>
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Scambio")}
-              >
-                <Text>Trasferisci</Text>
-              </TouchableOpacity>
             </Modal>
           )}
 
@@ -92,9 +114,11 @@ export default function CardListScreen({navigation}) {
                   key={index}
                   style={{
                     backgroundColor:
-                      item.game === "minecraft" ? colors.red
-                        : item.game === "supermario" ? colors.green
-                        : colors.blu,
+                      item.game === "minecraft"
+                        ? colors.red
+                        : item.game === "supermario"
+                        ? colors.green
+                        : colors.yellow,
                     width: "45%",
                     height: 150,
                     margin: 5,
