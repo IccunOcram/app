@@ -5,6 +5,8 @@ import styles from "./Style.js";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import api from "../Utility/api";
 import Spacer from "../components/Spacer";
+import UpTab from "../components/UpTab"
+import colors from "../config/colors";
 
 export default function CardListScreen() {
   const [isSelected, setSelection] = useState(false);
@@ -42,43 +44,47 @@ export default function CardListScreen() {
   }, []);
 
   return (
-    <View style = {{height: "100%"}}>
-    <ScrollView style = {{height: "100%", flexWrap: "wrap", flexDirection: "row"}}>
+    <>
 
-      {/* <View style={styles.button}>
-        <TouchableOpacity
-          title={"getCards"}
-          onPress={() => {
-            getCardList();
-          }}
-        >
-          <Text style={{ color: "black" }}>Ottieni carte</Text>
-        </TouchableOpacity>
-      </View> */}
+    <UpTab/>
+
+    <ScrollView >
+      <View style = {{ height: '100%',padding: 5,flexDirection: 'row', flexWrap: 'wrap', }}>
 
       {cards
         ? cards.map((item, index) => (
             <View
               key={index}
               style={{
-                backgroundColor: item.game === "minecraft" ?"green" :
-                                 item.game === "supermario" ? "blue" : "red",
-                width: 100,
-                height: 100,
-                marginTop: 30,
-                borderRadius: 10,
-                flexWrap: "wrap"
+                backgroundColor: item.game === "minecraft" ? colors.red :
+                                 item.game === "supermario" ? colors.green : colors.blu,
+                width: '45%',
+                height: 150,
+                margin: 5,  
+                padding: 5,             
+                borderRadius: 10,  
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start'              
               }}
             >
-              <Spacer size={5} />
-              <Text style={{ textAlign: "center" }}> {item.name} </Text>
-              <Spacer size={5} />
-              <Text style={{ textAlign: "center" }}> {item.game} </Text>
+              
+              <Text style={{color:'white', fontSize: 20, }}> {item.name} </Text>
+              
+              <Text style={{ color:'white', fontSize: 12,  }}> {item.game} </Text>
             </View>
           ))
         : console.log("Non c'è niente")}
+      </View>
+      <View>
+        <Text>prova</Text>
+      </View>
+      
+
         </ScrollView>
-    </View>
+    </>
+
+    
+ 
 
     /* <View style={{ flex : 1, alignItems : "center"}}>
           {isLoading ? <ActivityIndicator/> : (

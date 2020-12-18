@@ -4,6 +4,8 @@ import colors from '../config/colors'
 
 const styles = StyleSheet.create({
 
+    /////////////////////////////////SIGN//////////////////////
+
     input: {
         
         width: "90%",
@@ -23,6 +25,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor : colors.blu,
         borderBottomLeftRadius: 90,
+        borderBottomLeftRadius: 90,
+
         
     },
     signupcontainer: {
@@ -55,7 +59,40 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         
+    },
+
+    
+
+
+    /////////////////////////////////HOME//////////////////////
+
+
+
+    /////////////////////////////////PROFILE//////////////////////
+
+    profilecontainer: {
+        
+        height: '50%',
+        width: '100%',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor : colors.blu,
+        borderBottomLeftRadius: 90,
+        borderBottomLeftRadius: 90,
+        borderBottomRightRadius: 90
+    },
+
+    profilecontainertext: {
+        color:'white', 
+        fontSize: 30,
+        margin: 10,
     }
+
+
+    /////////////////////////////////CARD//////////////////////
+
+
+    
 
 
 
