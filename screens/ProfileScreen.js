@@ -56,7 +56,7 @@ export default function ProfileScreen(){
                             />
                     </TouchableOpacity>                  
 
-                    <Text style={{fontSize: 25, color:colors.red, margin: 20}}>scan the qr or click to copy</Text>
+                    <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
 
 
                    
