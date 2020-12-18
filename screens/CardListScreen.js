@@ -13,6 +13,12 @@ export default function CardListScreen() {
   const [messageOpen, setMessageOpen] = useState(false);
   const [cards, setCards] = useState([]);
 
+  /* const cardDetail = () => {
+    <View>
+
+    </View>
+  } */
+
   const getCardList = async () => {
     console.log("Sono Eseguito");
 

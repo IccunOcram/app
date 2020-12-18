@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
 export default function Main(){
     return (
-        <Tab.Navigator initialRouteName="CardList"
+        <Tab.Navigator initialRouteName="Home"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
