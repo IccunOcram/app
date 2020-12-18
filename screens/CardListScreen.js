@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { ActivityIndicator, Text, View, ScrollView, TouchableOpacity, Modal } from "react-native";
 import useForm from "../hooks/useForm.js";
 import styles from "./Style.js";
 //import { TouchableOpacity } from "react-native-gesture-handler";
@@ -14,8 +7,9 @@ import api from "../Utility/api";
 import Spacer from "../components/Spacer";
 import UpTab from "../components/UpTab";
 import colors from "../config/colors";
+import { rootNavigation } from "../Utility/navigation.js";
 
-export default function CardListScreen() {
+export default function CardListScreen({navigation}) {
   const [isSelected, setSelection] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -71,9 +65,9 @@ export default function CardListScreen() {
               presentationStyle="overFullScreen"
             >
               <View style={{ backgroundColor: "yellow" }}>
-              <TouchableOpacity onPress={() => setOpen(false)}>
-                <Text>Chiudi</Text>
-              </TouchableOpacity>
+                <TouchableOpacity onPress={() => setOpen(false)}>
+                  <Text>Chiudi</Text>
+                </TouchableOpacity>
                 <Text style={{ fontSize: 60, color: "blue" }}>
                   {cards[activeCard].name}
                 </Text>
@@ -84,9 +78,9 @@ export default function CardListScreen() {
                   {cards[activeCard].description}
                 </Text>
               </View>
-               <TouchableOpacity 
-                  //onPress=Schermata trasferimento 
-                > 
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Scambio")}
+              >
                 <Text>Trasferisci</Text>
               </TouchableOpacity>
             </Modal>
@@ -98,10 +92,8 @@ export default function CardListScreen() {
                   key={index}
                   style={{
                     backgroundColor:
-                      item.game === "minecraft"
-                        ? colors.red
-                        : item.game === "supermario"
-                        ? colors.green
+                      item.game === "minecraft" ? colors.red
+                        : item.game === "supermario" ? colors.green
                         : colors.blu,
                     width: "45%",
                     height: 150,

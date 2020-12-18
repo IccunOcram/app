@@ -1,10 +1,6 @@
-import React from "react"
-import AuthProvider from "./AuthContext"
+import React from "react";
+import AuthProvider from "./AuthContext";
 
-export default function Providers({ children }){
-    return (
-        <AuthProvider>
-            {children}
-        </AuthProvider>
-    )
+export default function Providers({ children }) {
+  return <AuthProvider>{children}</AuthProvider>;
 }

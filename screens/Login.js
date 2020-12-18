@@ -6,11 +6,11 @@ import Input from "../components/Input.js";
 import { rootNavigation } from "../Utility/navigation.js";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import useForm from "../hooks/useForm.js";
-import { AuthContext } from "../context/AuthContext"
-import api from '../Utility/api'
-import Spacer from '../components/Spacer.js'
-import styles from './Style.js'
-import colors from '../config/colors'
+import { AuthContext } from "../context/AuthContext";
+import api from "../Utility/api";
+import Spacer from "../components/Spacer.js";
+import styles from "./Style.js";
+import colors from "../config/colors";
 
 const inputs = [
   { label: "Username", name: "username_email", ref: createRef() },
@@ -39,19 +39,21 @@ export default function Login({ navigation, route }) {
   };
 
   const submitLogin = async () => {
-
     try {
       setLoading(true);
-      const { result, errors, payload } = await api.post("authentication/login-action", formData.values);
-      console.log( formData)
+      const { result, errors, payload } = await api.post(
+        "authentication/login-action",
+        formData.values
+      );
+      console.log(formData);
       if (result) {
         manageUserData(payload);
         rootNavigation.current.navigate("Main");
-        console.log('Loggato')
+        console.log("Loggato");
       } else {
         setError(errors[0].message);
         setMessageOpen(true);
-        console.log('errore')
+        console.log("errore");
       }
     } catch (err) {
       console.warn(err);
@@ -63,46 +65,51 @@ export default function Login({ navigation, route }) {
   };
 
   return (
-    
-
-    <View style = {{ flex : 1, alignItems : "center"}}>
+    <View style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.signcontainer}>
-        <Text style={{color:'white'}} >login</Text>        
+        <Text style={{ color: "white" }}>login</Text>
       </View>
       <Spacer size={15} />
-      {inputs.map((input, index) =>
-          <View key={index} style = {{width:"100%", alignItems : "center"}} >
-                {/* <Text>{input.label}</Text> */}
-            <TextInput onChangeText={(text) => setFormValue(input.name, text)}
-                  label={input.label} style = {styles.input} placeholder={input.label} placeholderTextColor='#0099e5'
-              />
-            <Spacer size={10} />
-                
-          </View>)}
-            <Spacer size={5} />
-          
-          <View style = {{width:"100%", alignItems: 'center', }}>
-                <View style={styles.button}>
-              <TouchableOpacity title={"Accedi"} onPress={submitLogin} style={{width: 300, alignItems:'center'}} >
-                    <Text style={{color:'white'}}>login</Text>
+      {inputs.map((input, index) => (
+        <View key={index} style={{ width: "100%", alignItems: "center" }}>
+          {/* <Text>{input.label}</Text> */}
+          <TextInput
+            onChangeText={(text) => setFormValue(input.name, text)}
+            label={input.label}
+            style={styles.input}
+            placeholder={input.label}
+            placeholderTextColor="#0099e5"
+          />
+          <Spacer size={10} />
+        </View>
+      ))}
+      <Spacer size={5} />
 
-              </TouchableOpacity>
-                </View>
-            
-            <TouchableOpacity onPress={lostPassword}>
-              <Text>have you lost the <Text style={{color: colors.red}}>password?</Text></Text>
-              
-            </TouchableOpacity>
+      <View style={{ width: "100%", alignItems: "center" }}>
+        <View style={styles.button}>
+          <TouchableOpacity
+            title={"Accedi"}
+            onPress={submitLogin}
+            style={{ width: 300, alignItems: "center" }}
+          >
+            <Text style={{ color: "white" }}>login</Text>
+          </TouchableOpacity>
+        </View>
 
-              <TouchableOpacity onPress={signUpForm}>
-            <Text>
-              you dont have an account? 
-                <Text style={{color: colors.red}}>Register</Text>
-            </Text>
-              </TouchableOpacity>
+        <TouchableOpacity onPress={lostPassword}>
+          <Text>
+            have you lost the{" "}
+            <Text style={{ color: colors.red }}>password?</Text>
+          </Text>
+        </TouchableOpacity>
 
-          </View>
-            
+        <TouchableOpacity onPress={signUpForm}>
+          <Text>
+            you dont have an account?
+            <Text style={{ color: colors.red }}>Register</Text>
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
