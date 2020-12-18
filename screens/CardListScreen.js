@@ -96,15 +96,13 @@ export default function CardListScreen({navigation}) {
 
                   <View style={{width: '60%',height: 45,borderRadius: 10,backgroundColor:  colors.blu ,alignItems: 'center',justifyContent: 'center'}}>
 
-                <TouchableOpacity title={"Trasferisci"}  style={{width: 300, alignItems:'center'}} onPress={() => navigation.navigate("Scambio")}>
+                <TouchableOpacity title={"Trasferisci"}  style={{width: 300, alignItems:'center'}} onPress={() => navigation.navigate("Scambio", {card_id: cards[activeCard].id})}>
 
                       <Text style={{color:'white',fontSize:20}} >
                         Trasferisci
                       </Text>
 
                 </TouchableOpacity>
-
-                
 
                   </View>
                 </View>
