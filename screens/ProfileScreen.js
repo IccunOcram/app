@@ -1,15 +1,46 @@
-import React, { useContext } from "react";
-import { TouchableOpacity, Text, View, Clipboard } from "react-native";
+import React, { useContext, useState, useEffect } from "react";
+import { TouchableOpacity, Text, View, Clipboard, ActivityIndicator } from "react-native";
 import UpTab from "../components/UpTab";
 import QRCode from "react-native-qrcode-svg";
 import { AuthContext } from "../context/AuthContext";
 import styles from "./Style";
 import colors from "../config/colors";
+import api from "../Utility/api.js"
 
 export default function ProfileScreen(){
-    const { user } = useContext(AuthContext);
-    const uuid = user.uuid    
-    const copyIt = ()=> Clipboard.setString(uuid)
+    const { user, setUser, onLogout } = useContext(AuthContext);
+    // const uuid = user.uuid 
+    const copyIt = ()=> Clipboard.setString(user.portfolio_code);
+
+    const [loading, setLoading] = useState(false);
+    const [codiceQr, setCodiceQr] = useState();
+
+    
+    const getQrCode = async () => {
+
+        console.log("Sono Eseguito");
+    
+        try {
+          setLoading(true);
+          const { result, errors, payload } = await api.post("refresh-portfolio-code");
+          console.log("errore: ", errors);
+          console.log("result: ", result);
+          console.log("payload: ", payload);
+          setUser({...user, portfolio_code: payload.portfolio_code});
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      useEffect(() => {
+        if (!user.portfolio_code){
+            getQrCode();
+        }
+    }, [])
+
+
     return(
         <>
             
@@ -42,25 +73,28 @@ export default function ProfileScreen(){
 
                 
                 <View  style={{alignItems: 'center', width: '100%', height: '50%', justifyContent: 'center'}}>
-
-                    <TouchableOpacity onPress={copyIt}>
-                            <QRCode 
-                                value= {user.uuid}
+                
+                            {
+                                
+                                loading ? <ActivityIndicator /> :
+                                <TouchableOpacity onPress={copyIt}>
+                                <QRCode 
+                                value= {user.portfolio_code}
                                 color= '#0099e5'
                                 size={250}
-                                backgroundColor= 'transparent'             
-                                
+                                backgroundColor= 'transparent' 
                             />
-                    </TouchableOpacity>                  
+                                </TouchableOpacity>
+                            }
 
-                    <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
+                <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
+                <TouchableOpacity onPress={onLogout}>
+                <Text>
+                    Logout
+                </Text>
 
+                </TouchableOpacity>
 
-                   
-
-          <Text style={{ fontSize: 25, color: colors.blu, margin: 20 }}>
-            scan the qr or click to copy
-          </Text>
         </View>
       </View>
     </>

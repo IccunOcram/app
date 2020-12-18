@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen.js";
-import CardListScreen from "../screens/CardListScreen.js";
+import Cards from "../navigators/Cards";
 import ProfileScreen from "../screens/ProfileScreen.js";
 import Scambio from "../screens/Scambio.js";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -37,9 +37,9 @@ export default function Main() {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="CardList" component={CardListScreen} />
+      <Tab.Screen name="CardList" component={Cards} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Scambio" component={Scambio} />
+      {/* <Tab.Screen name="Scambio" component={Scambio} /> */}
     </Tab.Navigator>
   );
 }

@@ -18,6 +18,7 @@ export default function HomeScreen() {
             <UpTab/>
         
             <View style={{width: '100%', alignItems: 'center'}}>
+            
                 <Text style={{color: colors.blu, fontSize: 40}}> {user.name}</Text>
                 
             </View>
