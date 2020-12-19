@@ -24,9 +24,12 @@ export default function AuthProvider({ children }) {
         routes: [{ name: "Auth" }],
       })
     );
-    setUser(null);
-    setToken("");
-    await AsyncStorage.removeItem("AuthToken"); // cancello token dalla memoria
+    setTimeout(async() => {
+
+      setUser(null);
+      setToken("");
+      await AsyncStorage.removeItem("AuthToken"); // cancello token dalla memoria
+    }, 1000)
 
     // cancello la storia di navigazione e vado sulla schermata di autenticazione
     

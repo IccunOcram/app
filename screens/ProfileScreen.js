@@ -80,8 +80,8 @@ export default function ProfileScreen(){
                                 <TouchableOpacity onPress={copyIt}>
                                 <QRCode 
                                 // value= {user.portfolio_code}
-                                value= {'tua mamma'}
-                                color= '#0099e5'
+                                value= {user.portfolio_code}
+                                // color= '#0099e5'
                                 size={250}
                                 backgroundColor= 'transparent' 
                             />
@@ -89,12 +89,15 @@ export default function ProfileScreen(){
                             }
 
                 <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
-                <TouchableOpacity onPress={onLogout}>
-                <Text>
-                    Logout
-                </Text>
+                <View style={styles.button}>
 
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={onLogout} style={{width: 300, justifyContent:'center', alignItems:'center' }}>
+                        <Text>
+                            Logout
+                        </Text>
+
+                    </TouchableOpacity>
+                </View>
 
         </View>
       </View>
