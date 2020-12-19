@@ -1,33 +1,37 @@
-import ApiConf from '../config/apis'
+import ApiConf from "../config/apis";
 
-let authToken = ''
+let authToken = "";
 
 export function setToken(token) {
-    authToken = token
+  authToken = token;
 }
 
 class Api {
-    async get (url) {
-        console.log(`${ApiConf.baseUrl}/${url}`);
-        return (await fetch(`${ApiConf.baseUrl}/${url}`, {
-            headers: {
-                Authorization: authToken,
-            }
-        })).json()
-    }
+  async get(url) {
+    console.log(`${ApiConf.baseUrl}/${url}`);
+    return (
+      await fetch(`${ApiConf.baseUrl}/${url}`, {
+        headers: {
+          Authorization: authToken,
+        },
+      })
+    ).json();
+  }
 
-    async post (url, params = {}) {
-        console.log(`${ApiConf.baseUrl}/${url}`);
-        return (await fetch(`${ApiConf.baseUrl}/${url}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: authToken,
-            },
-            body: JSON.stringify(params),
-            method: 'POST'
-        })).json()
-    }
+  async post(url, params = {}) {
+    console.log(`${ApiConf.baseUrl}/${url}`);
+    return (
+      await fetch(`${ApiConf.baseUrl}/${url}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authToken,
+        },
+        body: JSON.stringify(params),
+        method: "POST",
+      })
+    ).json();
+  }
 }
 
-const api = new Api()
-export default api
+const api = new Api();
+export default api;
