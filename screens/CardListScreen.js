@@ -96,7 +96,7 @@ export default function CardListScreen({navigation}) {
 
                   <View style={{width: '60%',height: 45,borderRadius: 10,backgroundColor:  colors.blu ,alignItems: 'center',justifyContent: 'center'}}>
 
-                <TouchableOpacity title={"Trasferisci"}  style={{width: 300, alignItems:'center'}} onPress={() => {setOpen(false);navigation.navigate("Scambio", {card_id: cards[activeCard].id})}}>
+                <TouchableOpacity title={"Trasferisci"}  style={{width: 300, alignItems:'center'}} onPress={() => {setOpen(false);navigation.navigate("Scambio", {card_id: cards[activeCard].id, card_name: cards[activeCard].name , card_game: cards[activeCard].game  })}}>
 
                       <Text style={{color:'white',fontSize:20}} >
                         Trasferisci

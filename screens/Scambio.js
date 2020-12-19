@@ -4,17 +4,21 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import { AuthContext } from "../context/AuthContext";
 import api from "../Utility/api.js"
 import styles from "./Style.js";
-import Spacer from "../components/Spacer.js";
+import colors from "../config/colors";
+
+
 
 function Scambio({navigation, route}) {
+
+ 
 
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(false);
   //const [, ] = useState();
 
-  const [text, setText] = useState('');
-  console.log(text)
+  const [code, setCode] = useState('');
+  console.log(code)
 
   
 
@@ -24,7 +28,7 @@ function Scambio({navigation, route}) {
     
         try {
           setLoading(true);
-          const { result, errors, payload } = await api.post("move-card", {"card_id": route.params.card_id, "portfolio_code":text });
+          const { result, errors, payload } = await api.post("move-card", {"card_id": route.params.card_id, "portfolio_code":code });
           console.log("errore: ", errors);
           console.log("result: ", result);
           console.log("payload: ", payload);
@@ -38,34 +42,59 @@ function Scambio({navigation, route}) {
 
     
     return (
-        <View>
+      
+      <View>
+        <View style={styles.profilecontainer}>
+
+          <View>
+
+          <Text style={{fontSize:40, color:'white'}}>{route.params.card_name}</Text>
+          <Text style={{fontSize:20, color:'white'}}>{route.params.card_game}</Text>
+
+          </View>
+
+
+
+        </View>
+        <View style={{height: '30%', width:'100%',justifyContent:'space-around', alignItems: 'center'}}>
+
+          <Text style={{color: colors.blu, width: '80%', fontSize: 18, textAlign:'center'}}>inserisci qui il codice utente dell' account a cui mandare la carta</Text>
+
+          <TextInput
+          style={styles.input}
+          placeholder="insert here de code"
+          placeholderTextColor="#0099e5"
+          onChangeText={code => setCode(code)}
+          defaultValue={code}
+          /> 
+           <Text style={{color: colors.red, width: '80%', fontSize: 15, textAlign:'center'}}>o scannerizza il qr code</Text>
+        </View>
+        <View style={{ width: "100%", height: '20%',justifyContent:'center', alignItems: "center" }}>
+
+          <View style={styles.button}>
+
+            <TouchableOpacity style={{width:300,alignItems:'center'}} onPress={moveCards}>
+              <Text style={{fontSize:20, color:'white'}}>scambio</Text>
+            </TouchableOpacity>
+
+          </View>
+        </View>
+
+
+
+
+      </View>
+         
+      
+
+  
     
-        <Text>
-            Inserisci codice
-        </Text> 
-        <TextInput
-        style={{height: 40}}
-        placeholder="Type here to translate!"
-        onChangeText={text => setText(text)}
-        defaultValue={text}
-      />    
-
-        <Text>
-            Voglio usare il QRCode
-        </Text>
-
-        <TouchableOpacity onPress={moveCards}>
-            <Text>Trasferisci</Text>
-        </TouchableOpacity>
-
-
-    </View>
-
     );
 
 }
 
 export default Scambio
+
 
     
 
@@ -101,3 +130,4 @@ export default Scambio
       {scanned && (
         <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
       )} */}
+<View style={{ width: "100%", alignItems: "center" }}></View>
