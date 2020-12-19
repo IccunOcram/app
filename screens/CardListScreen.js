@@ -8,6 +8,7 @@ import Spacer from "../components/Spacer";
 import UpTab from "../components/UpTab";
 import colors from "../config/colors";
 import { rootNavigation } from "../Utility/navigation.js";
+import { useIsFocused } from '@react-navigation/native'
 
 export default function CardListScreen({navigation}) {
   const [isSelected, setSelection] = useState(false);
@@ -17,6 +18,7 @@ export default function CardListScreen({navigation}) {
   const [cards, setCards] = useState([]);
   const [open, setOpen] = useState(false);
   const [activeCard, setActiveCard] = useState();
+  const isFocused = useIsFocused();
 
   const cardDetails = (index) => {
     console.log("Dettaglio aperto", index);
@@ -43,8 +45,8 @@ export default function CardListScreen({navigation}) {
   };
 
   useEffect(() => {
-    getCardList();
-  }, []);
+    if (isFocused) getCardList();
+  }, [isFocused]);
 
   return (
     <>
@@ -149,7 +151,7 @@ export default function CardListScreen({navigation}) {
               } */}
                 </TouchableOpacity>
               ))
-            : console.log("Non c'è niente")}
+            : null }
         </View>
       </ScrollView>
     </>

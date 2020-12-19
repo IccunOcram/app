@@ -80,8 +80,8 @@ export default function ProfileScreen(){
                                 <TouchableOpacity onPress={copyIt}>
                                 <QRCode 
                                 // value= {user.portfolio_code}
-                                value= {'tua mamma'}
-                                color= '#0099e5'
+                                value= {user.portfolio_code}
+                                // color= '#0099e5'
                                 size={250}
                                 backgroundColor= 'transparent' 
                             />
