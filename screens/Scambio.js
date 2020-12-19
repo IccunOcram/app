@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createRef } from "react";
-import { View, Text, StyleSheet, TouchableOpacity,TextInput, Button  } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,TextInput, Button, ScrollView  } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { AuthContext } from "../context/AuthContext";
 import api from "../Utility/api.js"
@@ -20,6 +20,8 @@ function Scambio({navigation, route}) {
   const [code, setCode] = useState('');
   console.log(code)
 
+  const [open, setOpen] = useState(false);
+
   
 
     
@@ -28,6 +30,7 @@ function Scambio({navigation, route}) {
     
         try {
           setLoading(true);
+          
           const { result, errors, payload } = await api.post("move-card", {"card_id": route.params.card_id, portfolio_code });
           console.log("errore: ", errors);
           console.log("result: ", result);
@@ -39,6 +42,7 @@ function Scambio({navigation, route}) {
           setLoading(false);
         }
       };
+      
 
       const [hasPermission, setHasPermission] = useState(null);
       const [scanned, setScanned] = useState(false);
@@ -46,7 +50,12 @@ function Scambio({navigation, route}) {
       useEffect(() => {
         (async () => {
           const { status } = await BarCodeScanner.requestPermissionsAsync();
+          console.log(status)
           setHasPermission(status === "granted");
+          if (status === "granted"){
+            setOpen(true);
+
+          }
         })();
       }, []);
     
@@ -58,88 +67,124 @@ function Scambio({navigation, route}) {
         alert(`Bar code with type ${type} and data ${data} has been scanned!`);
       };
     
-      if (hasPermission === null) {
-        return <Text>Requesting for camera permission</Text>;
-      }
-      if (hasPermission === false) {
-        return <Text>No access to camera</Text>;
-      } 
+      // if (hasPermission === null) {
+      //   return <Text>Requesting for camera permission</Text>;
+      // }
+      // if (hasPermission === false) {
+      //   return <Text>No access to camera</Text>;
+      // } 
 
+
+     
+        
+        return (
+          
+          <View style={{flex: 1}}>
+            <ScrollView style={{flexGrow: 1}}>
+
+            <View style={styles.scambiocontainer}>
+            <View style={{height: '2%',width: '100%', alignItems:'flex-end'}}>
+                      <TouchableOpacity onPress={() => {navigation.navigate("CardListScreen")}}>
+                        <View style={{ borderRadius: 100, height:40, width:40, alignItems: 'center', justifyContent: 'center'  }}>
     
-    return (
-      
-      <View style={{flex: 1}}>
-        <View style={styles.scambiocontainer}>
-        <View style={{height: '2%',width: '100%', alignItems:'flex-end'}}>
-                  <TouchableOpacity onPress={() => {navigation.navigate("CardListScreen")}}>
-                    <View style={{ borderRadius: 100, height:40, width:40, alignItems: 'center', justifyContent: 'center'  }}>
-
-                    <Text style={{fontSize:40,color: 'white'}}>x</Text>
+                        <Text style={{fontSize:40,color: 'white'}}>x</Text>
+                        </View>
+                      </TouchableOpacity>
+    
                     </View>
-                  </TouchableOpacity>
+    
+              <View>
+    
+              <Text style={{fontSize:40, color:'white'}}>{route.params.card_name}</Text>
+              <Text style={{fontSize:20, color:'white'}}>{route.params.card_game}</Text>
+    
+              </View>
+    
+    
+    
+            </View>
+            {
+              open ? <>
+              
+              <View style={{justifyContent:'center', alignItems:'center', margin:20}}>
+                <View style={{height: 380,width:380}}>
 
+                  <BarCodeScanner
+                    barCodeType={BarCodeScanner.Constants.BarCodeType.qr , BarCodeScanner.BarCodeBounds }
+
+                    onBarCodeScanned={handleBarCodeScanned}
+                    style={StyleSheet.absoluteFillObject}
+                    />
                 </View>
 
-          <View>
-
-          <Text style={{fontSize:40, color:'white'}}>{route.params.card_name}</Text>
-          <Text style={{fontSize:20, color:'white'}}>{route.params.card_game}</Text>
-
-          </View>
-
-
-
-        </View>
-        <View style={{height: '40%', width:'100%',justifyContent:'space-around', alignItems: 'center'}}>
-
-          <Text style={{color: colors.blu, width: '80%', fontSize: 18, textAlign:'center'}}>inserisci qui il codice utente dell' account a cui mandare la carta</Text>
-
-          <TextInput
-          style={styles.input}
-          placeholder="insert here de code"
-          placeholderTextColor="#0099e5"
-          onChangeText={code => setCode(code)}
-          defaultValue={code}
-          /> 
-           <Text style={{color: colors.red, width: '80%', fontSize: 15, textAlign:'center'}}>utilizza il qr code</Text>
-        </View>
-        <View style={{ width: "100%", height: '10%',justifyContent:'center', alignItems: "center" }}>
-
-          <View style={styles.button}>
-
-            <TouchableOpacity style={{width:300,alignItems:'center'}} onPress={() => {moveCards(code);navigation.navigate("CardListScreen")}}>
-              <Text style={{fontSize:20, color:'white'}}>scambio</Text>
-            </TouchableOpacity>
-
-          </View>
-        </View>
-
-        <BarCodeScanner
-        barCodeType={BarCodeScanner.Constants.BarCodeType.qr , BarCodeScanner.BarCodeSize={height:50,width:50} }
+                  {scanned && (
+                  
+                    <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+                  
+                  )} 
+                   <Button title={"move to"} onPress={() => setOpen(false)} />
+                </View>
+              
+              </>
+              : <>
+              
+              
+                <View style={{height: '40%', width:'100%',justifyContent:'space-around', alignItems: 'center'}}>
         
-        onBarCodeScanned={handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
-      {scanned && (
-        <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
-      )} 
+            
+        
+                  <Text style={{color: colors.blu, width: '80%', fontSize: 18, textAlign:'center'}}>inserisci qui il codice utente dell' account a cui mandare la carta</Text>
+        
+                  <TextInput
+                  style={styles.input}
+                  placeholder="insert here de code"
+                  placeholderTextColor="#0099e5"
+                  onChangeText={code => setCode(code)}
+                  defaultValue={code}
+                  /> 
+                    <TouchableOpacity onPress={() => setOpen(true)}>
+
+                      <Text style={{color: colors.red, width: '80%', fontSize: 15, textAlign:'center'}}>utilizza il qr code</Text>
+                    </TouchableOpacity>
 
 
+                  
+                </View>
+                <View style={{ width: "100%", height: '10%',justifyContent:'center', alignItems: "center" }}>
+        
+                  <View style={styles.button}>
+        
+                    <TouchableOpacity style={{width:300,alignItems:'center'}} onPress={() => {moveCards(code);navigation.navigate("CardListScreen")}}>
+                      <Text style={{fontSize:20, color:'white'}}>scambio</Text>
+                    </TouchableOpacity>
+        
+                  </View>
+                </View>
+              </>
+            
+            } 
+            </ScrollView>
 
-
-      </View>
-         
-      
-
-  
     
-    );
+            
+    
+    
+    
+    
+          </View>
+             
+          
+    
+      
+        
+        );
+      
+    
 
 }
 
 export default Scambio
-
-
+ 
     
 
     //Scambio con qr
