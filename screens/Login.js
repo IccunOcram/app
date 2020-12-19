@@ -67,7 +67,7 @@ export default function Login({ navigation, route }) {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.signcontainer}>
-        <Text style={{ color: "white" }}>login</Text>
+        <Text style={{ color: "white" }}>Login</Text>
       </View>
       <Spacer size={15} />
       {inputs.map((input, index) => (
@@ -92,21 +92,21 @@ export default function Login({ navigation, route }) {
             onPress={submitLogin}
             style={{ width: 300, alignItems: "center" }}
           >
-            <Text style={{ color: "white" }}>login</Text>
+            <Text style={{ color: "white" }}>Login</Text>
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity onPress={lostPassword}>
           <Text>
-            have you lost the{" "}
+            Hai dimenticato la{" "}
             <Text style={{ color: colors.red }}>password?</Text>
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={signUpForm}>
           <Text>
-            you dont have an account?
-            <Text style={{ color: colors.red }}>Register</Text>
+            Non hai un account?
+            <Text style={{ color: colors.red }}>Registrati!</Text>
           </Text>
         </TouchableOpacity>
       </View>

@@ -57,15 +57,15 @@ export default function ProfileScreen(){
                         <View style={{width:'100%', height: '20%', flexWrap: 'wrap', alignItems:'space-between'}}>
                             <View style={{ height: '100%', width:'30%', alignItems:'center', justifyContent: 'center', margin:10 }}>
                                 <Text style={{fontSize: 25, color: 'white'}}>13</Text>
-                                <Text style={{fontSize: 15, color: 'white'}}>scambi fatti</Text>
+                                <Text style={{fontSize: 15, color: 'white'}}>Scambi fatti</Text>
                             </View>
                             <View style={{ height: '100%', width:'30%', alignItems:'center', justifyContent: 'center',margin: 10}}>
                                 <Text style={{fontSize: 25, color: 'white'}}>5</Text>
-                                <Text style={{fontSize: 15, color: 'white'}}>allenatori</Text>
+                                <Text style={{fontSize: 15, color: 'white'}}>Allenatori</Text>
                             </View>
                             <View style={{ height: '100%', width:'30%', alignItems:'center', justifyContent: 'center',margin: 10}}>
                                 <Text style={{fontSize: 25, color: 'white'}}>3</Text>
-                                <Text style={{fontSize: 15, color: 'white'}}>palestre</Text>
+                                <Text style={{fontSize: 15, color: 'white'}}>Palestre</Text>
                             </View>
                         </View>
                     </View>
@@ -88,7 +88,7 @@ export default function ProfileScreen(){
                                 </TouchableOpacity>
                             }
 
-                <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>scan the qr or click to copy</Text>
+                <Text style={{fontSize: 25, color:colors.blu, margin: 20}}>Scansiona il codice QR o clicca per copiare </Text>
                 <View style={styles.button}>
 
                     <TouchableOpacity onPress={onLogout} style={{width: 300, justifyContent:'center', alignItems:'center' }}>
