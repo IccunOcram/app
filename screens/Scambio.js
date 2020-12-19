@@ -1,13 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
-import { TouchableOpacity, Text, View, Clipboard, ActivityIndicator } from "react-native";
-import UpTab from "../components/UpTab";
-import QRCode from "react-native-qrcode-svg";
+import React, { useState, useEffect, useContext, createRef } from "react";
+import { View, Text, StyleSheet, TouchableOpacity,TextInput, ScrollView, Button } from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 import { AuthContext } from "../context/AuthContext";
-import styles from "./Style";
-import colors from "../config/colors";
 import api from "../Utility/api.js"
+import styles from "./Style.js";
+import colors from "../config/colors";
 
-function Scambio({ navigation, route }) {
+export default function Scambio({ navigation, route }) {
   const { user } = useContext(AuthContext);
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
@@ -77,7 +76,7 @@ function Scambio({ navigation, route }) {
               {scanned && (
                 <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
               )}
-              <Button title={"move to"} onPress={() => setOpen(false)} />
+              <Button title={"Usa il codice"} onPress={() => setOpen(false)} />
             </View>
             :
             <>
@@ -97,7 +96,7 @@ function Scambio({ navigation, route }) {
               <View style={{ width: "100%", justifyContent: 'center', alignItems: "center" }}>
                 <View style={styles.button}>
                   <TouchableOpacity style={{ width: 300, alignItems: 'center' }} onPress={() => { moveCards(code); navigation.navigate("CardListScreen") }}>
-                    <Text style={{ fontSize: 20, color: 'white' }}>scambio</Text>
+                    <Text style={{ fontSize: 20, color: 'white' }}>Scambio</Text>
                   </TouchableOpacity>
                 </View>
               </View>
