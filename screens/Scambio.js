@@ -1,24 +1,60 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, useContext, createRef } from "react";
+import { View, Text, StyleSheet, TouchableOpacity,TextInput  } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
-import Input from "../components/Input.js";
+import { AuthContext } from "../context/AuthContext";
+import api from "../Utility/api.js"
+import styles from "./Style.js";
+import Spacer from "../components/Spacer.js";
 
-const Scambio = () => {
+function Scambio({navigation, route}) {
+
+  const { user } = useContext(AuthContext);
+
+  const [loading, setLoading] = useState(false);
+  //const [, ] = useState();
+
+  const [text, setText] = useState('');
+  console.log(text)
+
+  
+
+    
+    const moveCards = async () => {
+       
+    
+        try {
+          setLoading(true);
+          const { result, errors, payload } = await api.post("move-card", {"card_id": route.params.card_id, "portfolio_code":text });
+          console.log("errore: ", errors);
+          console.log("result: ", result);
+          console.log("payload: ", payload);
+          
+        } catch (err) {
+          console.log(err);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+    
     return (
         <View>
     
         <Text>
             Inserisci codice
-        </Text>
-        <Input>
-                Codice
-        </Input>
+        </Text> 
+        <TextInput
+        style={{height: 40}}
+        placeholder="Type here to translate!"
+        onChangeText={text => setText(text)}
+        defaultValue={text}
+      />    
 
         <Text>
             Voglio usare il QRCode
         </Text>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={moveCards}>
             <Text>Trasferisci</Text>
         </TouchableOpacity>
 
@@ -26,9 +62,10 @@ const Scambio = () => {
     </View>
 
     );
+
 }
 
-export default Scambio;
+export default Scambio
 
     
 
