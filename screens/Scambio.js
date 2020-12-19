@@ -44,7 +44,16 @@ function Scambio({navigation, route}) {
     return (
       
       <View>
-        <View style={styles.profilecontainer}>
+        <View style={styles.scambiocontainer}>
+        <View style={{height: '2%',width: '100%', alignItems:'flex-end'}}>
+                  <TouchableOpacity onPress={() => {navigation.navigate("CardListScreen")}}>
+                    <View style={{ borderRadius: 100, height:40, width:40, alignItems: 'center', justifyContent: 'center'  }}>
+
+                    <Text style={{fontSize:40,color: 'white'}}>x</Text>
+                    </View>
+                  </TouchableOpacity>
+
+                </View>
 
           <View>
 
@@ -67,13 +76,13 @@ function Scambio({navigation, route}) {
           onChangeText={code => setCode(code)}
           defaultValue={code}
           /> 
-           <Text style={{color: colors.red, width: '80%', fontSize: 15, textAlign:'center'}}>o scannerizza il qr code</Text>
+           <Text style={{color: colors.red, width: '80%', fontSize: 15, textAlign:'center'}}>utilizza il qr code</Text>
         </View>
         <View style={{ width: "100%", height: '20%',justifyContent:'center', alignItems: "center" }}>
 
           <View style={styles.button}>
 
-            <TouchableOpacity style={{width:300,alignItems:'center'}} onPress={moveCards}>
+            <TouchableOpacity style={{width:300,alignItems:'center'}} onPress={() => {moveCards();navigation.navigate("CardListScreen")}}>
               <Text style={{fontSize:20, color:'white'}}>scambio</Text>
             </TouchableOpacity>
 

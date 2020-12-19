@@ -86,13 +86,23 @@ const styles = StyleSheet.create({
         color:'white', 
         fontSize: 30,
         margin: 10,
-    }
+    },
 
 
     /////////////////////////////////CARD//////////////////////
 
 
-    
+    scambiocontainer: {
+        
+        height: '40%',
+        width: '100%',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        backgroundColor : colors.blu,
+        borderBottomLeftRadius: 90,
+        borderBottomLeftRadius: 90,
+        borderBottomRightRadius: 90
+    },
 
 
 
