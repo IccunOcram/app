@@ -6,8 +6,8 @@ import { rootNavigation } from "../Utility/navigation.js";
 import styles from "./Style";
 
 export default function ThankYouScreen({ navigation }) {
-  const goHome = () => {
-    rootNavigation.current.navigate("Main");
+  const goLogin = () => {
+    navigation.navigate("Login");
   };
 
   return (
@@ -22,7 +22,7 @@ export default function ThankYouScreen({ navigation }) {
       {/* <FormButton title={"Entra nell'App"} onPress={goHome} /> */}
       <View style={styles.buttonw}>
         <TouchableOpacity
-          onPress={goHome}
+          onPress={goLogin}
           style={{ width: 300, alignItems: "center" }}
         >
           <Text>next</Text>

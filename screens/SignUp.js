@@ -1,5 +1,5 @@
 import React, { useContext, useState, createRef } from "react";
-import { Text, TextInput } from "react-native";
+import {Image, Text, TextInput } from "react-native";
 import Input from "../components/Input.js";
 import FormButton from "../components/FormButton.js";
 import { View, CheckBox } from "react-native";
@@ -8,6 +8,7 @@ import useForm from "../hooks/useForm.js";
 import api from "../Utility/api";
 import styles from "./Style.js";
 import { rootNavigation } from "../Utility/navigation.js";
+import logo from '../assets/logo.png';
 
 const inputs = [
   { label: "Nome", name: "name", ref: createRef() },
@@ -80,7 +81,7 @@ export default function SignUp({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.signupcontainer}>
-        <Text style={{ color: "white" }}>register</Text>
+      <Image source={logo}  /> 
       </View>
       {inputs.map((input, index) => (
         <View key={index} style={{ width: "100%", alignItems: "center" }}>
