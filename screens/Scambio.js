@@ -46,6 +46,7 @@ export default function Scambio({ navigation, route }) {
     if (!scanned) {
       setScanned(true);
       moveCards(data)
+      navigation.navigate("CardListScreen")
     }
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };

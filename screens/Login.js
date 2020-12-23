@@ -11,7 +11,7 @@ import api from "../Utility/api";
 import Spacer from "../components/Spacer.js";
 import styles from "./Style.js";
 import colors from "../config/colors";
-import logo from '../assets/logo.png'; 
+import logo_white from '../assets/logo_white.png'; 
 
 const inputs = [
   { label: "Username", name: "username_email", ref: createRef() },
@@ -68,7 +68,7 @@ export default function Login({ navigation, route }) {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.signcontainer}>
-      <Image source={logo}  /> 
+      <Image source={logo_white} style={{width: 100, height: 100}}  /> 
       </View>
       <Spacer size={15} />
       {inputs.map((input, index) => (
