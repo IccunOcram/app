@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import api from "../Utility/api.js"
 import styles from "./Style.js";
 import colors from "../config/colors";
+import Spacer from "../components/Spacer.js";
 
 export default function Scambio({ navigation, route }) {
   const { user } = useContext(AuthContext);
@@ -80,6 +81,7 @@ export default function Scambio({ navigation, route }) {
             </View>
             :
             <>
+              <Spacer size = {5} />
               <View style={{ width: '100%', justifyContent: 'space-around', alignItems: 'center' }}>
                 <Text style={{ color: colors.blu, width: '80%', fontSize: 18, textAlign: 'center' }}>Inserisci qui il codice utente dell' account a cui mandare la carta</Text>
                 <TextInput
@@ -89,6 +91,7 @@ export default function Scambio({ navigation, route }) {
                   onChangeText={code => setCode(code)}
                   defaultValue={code}
                 />
+                <Spacer size = {5} />
                 <TouchableOpacity onPress={() => setOpen(true)}>
                   <Text style={{ color: colors.red, width: '80%', fontSize: 15, textAlign: 'center' }}>Utilizza il QR code</Text>
                 </TouchableOpacity>
