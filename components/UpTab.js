@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { Text, View } from "react-native";
+import {Image, Text, View } from "react-native";
 import colors from "../config/colors";
 import { AuthContext } from "../context/AuthContext";
 import Colors from "../config/colors";
+import logo_blue from '../assets/logo_blue.png'
 
 export default function UpTab() {
   const { user } = useContext(AuthContext);
@@ -28,9 +29,7 @@ export default function UpTab() {
             justifyContent: "space-between",
           }}
         >
-          <Text style={{ margin: 5, color: colors.blu, fontSize: 20 }}>
-            logo
-          </Text>
+          <Image source={logo_blue} style={{width: 40, height: 40, marginLeft: 10}}></Image>
           <Text style={{ margin: 5, color: colors.blu, fontSize: 15 }}>
             {" "}
             {date}/{month}/{year}

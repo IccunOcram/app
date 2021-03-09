@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
     scambiocontainer: {
         
-        //height: '40%',
+        paddingVertical: 40,
         width: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',

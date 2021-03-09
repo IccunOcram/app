@@ -1,17 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Image , View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../config/colors.js";
 import FormButton from "../components/FormButton.js";
 import { rootNavigation } from "../Utility/navigation.js";
 import styles from "./Style";
+import logo_white from '../assets/logo_white.png'
 
 export default function ThankYouScreen({ navigation }) {
-  const goHome = () => {
-    rootNavigation.current.navigate("Main");
+  const goLogin = () => {
+    navigation.navigate("Login");
   };
 
   return (
     <View style={style.container}>
+      <Image source={logo_white} style={{width: 150, height: 150}}></Image>
       <Text style={{ fontSize: 50, color: "white", marginBottom: 20 }}>
         THANKS
       </Text>
@@ -22,7 +24,7 @@ export default function ThankYouScreen({ navigation }) {
       {/* <FormButton title={"Entra nell'App"} onPress={goHome} /> */}
       <View style={styles.buttonw}>
         <TouchableOpacity
-          onPress={goHome}
+          onPress={goLogin}
           style={{ width: 300, alignItems: "center" }}
         >
           <Text>next</Text>

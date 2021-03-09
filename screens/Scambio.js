@@ -44,6 +44,7 @@ export default function Scambio({ navigation, route }) {
     if (!scanned) {
       setScanned(true);
       moveCards(data)
+      navigation.navigate("CardListScreen")
     }
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
@@ -63,6 +64,9 @@ export default function Scambio({ navigation, route }) {
             <Text style={{ fontSize: 20, color: 'white' }}>{route.params.card_game}</Text>
           </View>
         </View>
+        <Spacer size={10} />
+
+        
         {
           open
             ?
@@ -84,6 +88,7 @@ export default function Scambio({ navigation, route }) {
               <Spacer size = {5} />
               <View style={{ width: '100%', justifyContent: 'space-around', alignItems: 'center' }}>
                 <Text style={{ color: colors.blu, width: '80%', fontSize: 18, textAlign: 'center' }}>Inserisci qui il codice utente dell' account a cui mandare la carta</Text>
+                <Spacer size={5} />                
                 <TextInput
                   style={styles.input}
                   placeholder="Inserisci il codice"
@@ -91,10 +96,11 @@ export default function Scambio({ navigation, route }) {
                   onChangeText={code => setCode(code)}
                   defaultValue={code}
                 />
-                <Spacer size = {5} />
+                <Spacer size={5} /> 
                 <TouchableOpacity onPress={() => setOpen(true)}>
                   <Text style={{ color: colors.red, width: '80%', fontSize: 15, textAlign: 'center' }}>Utilizza il QR code</Text>
                 </TouchableOpacity>
+                <Spacer size={5} /> 
               </View>
               <View style={{ width: "100%", justifyContent: 'center', alignItems: "center" }}>
                 <View style={styles.button}>

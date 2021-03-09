@@ -82,7 +82,7 @@ export default function ProfileScreen(){
                                 // value= {user.portfolio_code}
                                 value= {user.portfolio_code}
                                 // color= '#0099e5'
-                                size={250}
+                                size={200}
                                 backgroundColor= 'transparent' 
                             />
                                 </TouchableOpacity>
